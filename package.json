@@ -1,0 +1,14 @@
+{
+  "name": "nw_test_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nightwatch"
+  },
+  "author": "EvgeniyTT",
+  "license": "ISC",
+  "devDependencies": {
+    "nightwatch": "^0.9.11"
+  }
+}
