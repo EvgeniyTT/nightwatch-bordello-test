@@ -42,10 +42,9 @@ module.exports = {
         boardPage.verifyAmountOfTasksInColumnEquals(1, 1, done)
         boardPage.verifyAmountOfTasksInColumnEquals(2, 1, done)
       })
-      .moveToElement('task-column:nth-of-type(1) task-panel',  10,  10)
-      .mouseButtonDown()
-      .moveToElement('task-column:nth-of-type(2)', 100, 100)
-      .mouseButtonUp()
+    boardPage
+      .moveTaskFromColumnToColumn(browser, 1, 1, 2)
+    browser
       .perform(function(done) {
         boardPage.verifyAmountOfTasksInColumnEquals(1, 0, done)
         boardPage.verifyAmountOfTasksInColumnEquals(2, 2, done)

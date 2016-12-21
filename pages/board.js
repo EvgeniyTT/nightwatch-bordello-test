@@ -5,8 +5,10 @@ module.exports = {
   elements: {
     boardName: '.board h2',
     addColumnButton: '.add-column',
+    taskColumn: 'task-column:nth-of-type(%d)',
     addTaskButton: 'task-column:nth-of-type(%d) .taskColumn-footer button',
     tasksInColumn: 'task-column:nth-of-type(%d) task-panel',
+    taskInColumn: 'task-column:nth-of-type(%d) task-panel:nth-of-type(%d)',
   },
   commands: [{
     clickAddTaskToColumn: function(columnIndex) {
@@ -22,9 +24,12 @@ module.exports = {
         done()
       });
     },
-    el: function(elementName, data) {
-      var element = this.elements[elementName.slice(1)];
-      return util.format(element.selector, data);
+    moveTaskFromColumnToColumn: function(browser, taskIndex, columnFrom, columnTo) {
+      return browser
+        .moveToElement(util.format(this.elements.taskInColumn.selector, columnFrom, taskIndex),  10,  10)
+        .mouseButtonDown()
+        .moveToElement(util.format(this.elements.taskColumn.selector, columnTo), 100, 100)
+        .mouseButtonUp()
     }
   }],
 };
